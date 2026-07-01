@@ -32,6 +32,5 @@ def lambda_handler(event, context):
         Body=buf,
         ContentType="application/pdf",
     )
-    print("mewo")
 
     return {"source_key": src_key, "dest_key": dest_key}
