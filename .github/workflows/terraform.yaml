@@ -113,15 +113,15 @@ jobs:
           role-session-name: github-actions-ansible
           role-skip-session-tagging: true
 
-      - name: install ansible + collection
+      - name: install ansible & collection
         run: |
           pip install ansible ansible-lint
           ansible-galaxy collection install -r ansible/requirements.yml
 
       - name: ansible-lint
-        run: ansible-lint ansible/playbooks/update_image2pdf_lambda.yml
+        run: ansible-lint ansible/update_image2pdf_lambda.yml
 
       - name: deploy
         if: github.event_name == 'workflow_dispatch'
-        run: ansible-playbook ansible/playbooks/update_image2pdf_lambda.yml -i ansible/inventories/inventory.yml
+        run: ansible-playbook ansible/update_image2pdf_lambda.yml -i ansible/inventories/inventory.yml
         working-directory: ansible
