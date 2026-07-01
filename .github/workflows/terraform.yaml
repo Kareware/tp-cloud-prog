@@ -124,3 +124,4 @@ jobs:
       - name: deploy
         if: github.event_name == 'workflow_dispatch'
         run: ansible-playbook ansible/playbooks/update_image2pdf_lambda.yml -i ansible/inventories/inventory.yml
+        working-directory: ansible
