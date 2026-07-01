@@ -5,7 +5,7 @@
 
 variable "source_bucket_arn" {
   description = "ARN of the source S3 bucket"
-  type = string
+  type        = string
 }
 
 #variable "destination_bucket_id" {
@@ -15,7 +15,7 @@ variable "source_bucket_arn" {
 
 variable "destination_bucket_arn" {
   description = "ARN of the destination S3 bucket"
-  type = string
+  type        = string
 }
 
 #variable "lambda_handler_source_dir" {

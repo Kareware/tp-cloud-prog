@@ -64,5 +64,5 @@ resource "aws_lambda_function" "image2pdf_lambda" {
   filename      = var.lambda_handler_zip_path
   function_name = var.lambda_function_name
   handler       = var.lambda_handler
-  runtime = var.lambda_runtime
+  runtime       = var.lambda_runtime
 }
