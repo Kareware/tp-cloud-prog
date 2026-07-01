@@ -1,4 +1,18 @@
 # IAM role for Lambda execution
+terraform {
+  required_version = ">= 1.6.0"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+    archive = {
+      source  = "hashicorp/archive"
+      version = "~> 2.4"
+    }
+  }
+}
+
 data "aws_iam_policy_document" "assume_role" {
   statement {
     effect = "Allow"
@@ -12,11 +26,11 @@ data "aws_iam_policy_document" "assume_role" {
   }
 }
 
-data "archive_file" "lambda_zip" {
-  type        = "zip"
-  source_dir  = var.lambda_handler_source_dir
-  output_path = var.lambda_handler_zip_path
-}
+#data "archive_file" "lambda_zip" {
+#  type        = "zip"
+#  source_dir  = var.lambda_handler_source_dir
+#  output_path = var.lambda_handler_zip_path
+#}
 
 resource "aws_iam_role" "image2pdf_lambda" {
   name               = "${var.lambda_function_name}_role"
