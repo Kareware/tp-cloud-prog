@@ -1,0 +1,22 @@
+---
+# tasks file for update_lambda
+- name: Package lambda handler into a zip
+  ansible.builtin.command:
+    cmd: "zip /tmp/handler.zip {{ lambda_handler_filename }}"
+    chdir: "{{ lambda_handler_dir }}"
+  changed_when: true
+
+- name: Update lambda function code
+  amazon.aws.lambda:
+    name: "{{ lambda_function_name }}"
+    state: present
+    zip_file: /tmp/handler.zip
+    runtime: "{{ lambda_runtime }}"
+    handler: "{{ lambda_handler }}"
+    role: "{{ lambda_role }}"
+    region: "{{ aws_region }}"
+
+- name: Remove temporary zip
+  ansible.builtin.file:
+    path: /tmp/handler.zip
+    state: absent
