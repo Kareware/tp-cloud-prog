@@ -1,0 +1,48 @@
+# Terraform local data
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Terraform variable files that can contain secrets
+terraform.tfvars
+terraform.tfvars.json
+*.auto.tfvars
+*.auto.tfvars.json
+
+# Terraform CLI config
+.terraformrc
+terraform.rc
+
+# Plan artifacts
+*.tfplan
+plan.out
+
+# Environment and credentials
+.env
+.env.*
+*.pem
+*.key
+
+# Python artifacts (Lambda and tests)
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Lambda packaging artifacts
+lambda/package/
+lambda/*.zip
+
+# Ansible retry files
+*.retry
+
+# OS/editor noise
+.DS_Store
+Thumbs.db

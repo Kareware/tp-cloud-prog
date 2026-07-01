@@ -1,0 +1,14 @@
+---
+- name: Patch image2pdf lambda function
+  hosts: localhost
+  gather_facts: false
+  roles:
+    - update_lambda
+  vars:
+    lambda_function_name: "image2pdf_lambda"
+    lambda_handler_dir: "../lambda"
+    lambda_handler_filename: "handler.py"
+    lambda_handler: "handler.lambda_handler"
+    lambda_runtime: "python3.12"
+    lambda_role: "arn:aws:iam::738563260931:role/image2pdf_lambda_role"
+    region: "{{ aws_region }}"
